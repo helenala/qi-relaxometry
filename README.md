@@ -1,6 +1,6 @@
 # QI Relaxometry
 
-The code in this repository is based on the QI relaxometry theory presented in Rustagi et al. [1]
+The code in this repository is based on the QI relaxometry theory presented in Rustagi et al. [1].
 
 Developers:
 
@@ -20,6 +20,10 @@ Use the following command to install required packages used in this repo:
 pip3 install -r requirements.txt
 ```
 
+## Demo
+
+Use the demo file in `./notebooks/demo.ipynb` to calculate and plot relaxation rates.
+
 ## Bibliography
 
-[1] https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.220403
+[1] A. Rustagi, I. Bertelli, T. van der Sar, and P. Upadhyaya, 2020, https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.220403
