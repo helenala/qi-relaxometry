@@ -14,6 +14,12 @@ Contributors:
 
 ## Installation
 
+Use the following command to install this repo:
+
+```bash
+git clone https://github.com/helenala/qi-relaxometry.git
+```
+
 Use the following command to install required packages used in this repo:
 
 ```bash
