@@ -301,23 +301,10 @@ class RelaxationRate:
                     isofrequencies.append([x, y])
             kx_iso = isofrequencies[0][0]
             ky_iso = isofrequencies[0][1]
-            # axes[1].plot(kx_iso, ky_iso)
-            # plt.show()
             self.kx_max = abs(amin(kx_iso)) * self.kx2 * self.zoom_in_heatmap
             self.ky_min = amin(ky_iso) * self.ky1 * self.zoom_in_heatmap
             self.kx_min = -self.kx_max * self.kx1
             self.ky_max = -self.ky_min * self.ky2
-            # if amax(kx_iso) > 1e6*2*pi:
-            #     # print(amax(kx_iso))
-            #     self.kx_max = amax(kx_iso) * self.kx2 * self.zoom_in_heatmap
-            #     self.ky_min = amin(ky_iso) * self.ky1 * self.zoom_in_heatmap
-            #     self.kx_min = -self.kx_max * self.kx1
-            #     self.ky_max = -self.ky_min * self.ky2
-            # else:
-            #     self.ky_min = -3e5*2*pi * self.ky1 * self.zoom_in_heatmap
-            #     self.kx_max = 2e6*2*pi * self.kx2 * self.zoom_in_heatmap
-            #     self.kx_min = -self.kx_max * self.kx1
-            #     self.ky_max = -self.ky_min * self.ky2
         else:
             print("cs.collections =< 1")
             self.ky_min = -2e7 * self.ky1 * self.zoom_in_heatmap
