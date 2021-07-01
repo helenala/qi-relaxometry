@@ -10,7 +10,7 @@ Contributors:
 
 - Brecht Simon (theory + code testing)
 - Toeno van der Sar (theory)
-- Samer Kurdi (theory)
+- [Samer Kurdi](https://github.com/spectecals) (theory)
 
 ## Installation
 
