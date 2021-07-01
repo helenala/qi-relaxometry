@@ -1,0 +1,6 @@
+*.png
+*.jpg
+plot-figures/
+.ipynb_checkpoints
+.vscode
+__pycache__/
