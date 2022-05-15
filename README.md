@@ -252,7 +252,7 @@ Gamma1.create_w_meshgrids()
 omega_desw = Gamma1.omega_spin_wave_dispersion()
 ```
 
-Plot the frequency $f$ [GHz] as function of wave number $k$ [1/$\mu$m].
+Plot the frequency `f` [GHz] as function of wave number `k` [1/um].
 
 ```python
 plt.figure(figsize=(8,6))
