@@ -30,7 +30,10 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Other stuff
 .DS_Store
+.commands
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

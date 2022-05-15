@@ -7,7 +7,6 @@ from numpy import linspace, meshgrid, array, abs, ones_like, zeros_like, \
 GAMMA = 2 * pi * 28.025e9   # [rad Hz/T]
 MU_0 = pi * 4e-7            # vacuum permeability [H/m]
 K_B = 1.38064852e-23        # Boltzmann constant [J/K]
-TEMPERATURE = 299           # Room temperature [K]
 ZFS = 2.87e9 * 2 * pi       # [rad Hz] in case of nv with spin=1
 
 
@@ -51,6 +50,8 @@ class RelaxationRate:
         material constant; Gilbert damping (default YIG: 1e-4 [unitless])
     A_exchange : float
         material exchange constant for spin stiffness (default YIG: 3.7e-12 [J/m])
+    temperature : float, int
+        temperature (default: 299 [K])
     dir_nv : list or float
         Miller indices in lab frame (default [1,1,1])
     phi_nv : float
@@ -78,6 +79,7 @@ class RelaxationRate:
                  M_saturation=142e3,
                  Gilbert_damping=1e-4,
                  A_exchange=3.7e-12,
+                 temperature=299,
                  dir_nv=[1, 1, 1],
                  phi_nv=0.,
                  omega=None,
@@ -94,6 +96,7 @@ class RelaxationRate:
         self.plusmin = plusmin
         self.quadrants = quadrants
         self.magnetization_saturation = M_saturation
+        self.temperature = temperature  # [Kelvin]
         self.alpha = Gilbert_damping
         self.w_exchange = GAMMA * 2 * A_exchange / \
             self.magnetization_saturation  # [rad Hz m^2]
@@ -158,7 +161,7 @@ class RelaxationRate:
 
     def create_hamiltonian_nv(self) -> np.ndarray:
         """Determine the Hamiltonian to calculate the ESR frequencies:
-        ZFS * Sz^2 + GAMMA * dot(B, S).
+        ZFS * Sz^2 + GAMMA * dot(B, S), where ZFS stands for zero-field splitting.
 
         Attributes
         ----------
@@ -536,7 +539,7 @@ class RelaxationRate:
         integrand = self.sum_di_dj_cij
 
         # multiply by 2*D_thermal [T^2 m^2 s] from c_ij [m^2 s]
-        integrand *= 2 * self.alpha * K_B * TEMPERATURE / \
+        integrand *= 2 * self.alpha * K_B * self.temperature / \
             (GAMMA * self.magnetization_saturation * self.film_thickness)
 
         integrand *= (GAMMA**2 / 2) * (2 * pi)**(-2) * 1e-6  # Hz to MHz
