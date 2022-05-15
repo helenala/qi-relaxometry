@@ -71,14 +71,14 @@ Y = Gamma.ky * 1e-6 / (2*pi)  # 2D numpy array [1/um]
 Z = Gamma.integrand_grid_include_nv_distance  # 2D numpy array [rad Hz]
 ```
 
-Calculate minimum and maximum element in `Gamma` integrand array
+Calculate minimum and maximum element in `Gamma` integrand array.
 
 ```python
 vmin = np.amin(Z)
 vmax = np.amax(Z)
 ```
 
-Create a directory to save plot figures
+Create a directory where you can save your plots in.
 
 ```python
 path = "plot-figures"
@@ -97,7 +97,7 @@ print(f"Created: \n\t.{path_txt}")
 print(f"Created: \n\t.{path_fig}")
 ```
 
-Save meshgrid in txt files (optional).
+Save meshgrids in `.txt` files (optional).
 
 ```python
 B = B_ext * 1e4  # external magnetic field [Gauss]
@@ -149,7 +149,7 @@ fig2.savefig(path_to_file)
 print(f"Plot saved in: \n\t{path_to_file}")
 ```
 
-### `Gamma` as function of `B`
+### Relaxation rate as function of magnetic field
 
 Calculate the relaxation rate `Gamma` [MHz] as function of the magnetic field `B` [Tesla].
 
@@ -277,4 +277,4 @@ Contributors:
 
 ## Bibliography
 
-[1] A. Rustagi, I. Bertelli, T. van der Sar, and P. Upadhyaya, 2020, https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.220403
+[1] A. Rustagi, I. Bertelli, T. van der Sar, and P. Upadhyaya, 2020, https://doi.org/10.1103/PhysRevB.102.220403
