@@ -215,7 +215,7 @@ class RelaxationRate:
             else:
                 print("No ESR frequency calculated or found!")
 
-    def create_nv_angles(self):
+    def create_nv_angles(self) -> None:
         """In this model, we rotate the standard NV orientations by phi = -pi/4 
         around the z axis such that the NV orientations [111] and [-1-11] are 
         placed in the x-z plane, whereas [1-1-1] and [-11-1] are placed in y-z 
@@ -315,7 +315,7 @@ class RelaxationRate:
             self.kx_min = -self.kx_max * self.kx1
             self.ky_max = -self.ky_min * self.ky2
 
-    def create_quadrants(self):
+    def create_quadrants(self) -> None:
         """Choosing specific quadrants may reduce the number of calculations of
         pixels due to symmetry (in kx).
         """
@@ -337,7 +337,7 @@ class RelaxationRate:
             self.quadrant_factor = 1
             self.create_qfactor(1, 1, 1, 1)
 
-    def create_qfactor(self, kx1, kx2, ky1, ky2):
+    def create_qfactor(self, kx1, kx2, ky1, ky2) -> None:
         self.kx1, self.kx2, self.ky1, self.ky2 = kx1, kx2, ky1, ky2
 
     def create_k_meshgrids(self, x_pixels=800, y_pixels=800) -> None:
@@ -548,7 +548,7 @@ class RelaxationRate:
                       (1 - exp(-self.k * self.film_thickness)))**2
         self.integrand_grid_exclude_nv_distance = real(integrand)  # [MHz]
 
-    def calculate_sum_di_dj_cij(self):
+    def calculate_sum_di_dj_cij(self) -> None:
         self.create_w_meshgrids()
         self.create_correlations_components()
         self.dipolar_tensor()
@@ -579,7 +579,7 @@ class RelaxationRate:
         self.Dx_min_k = self.d_xx_min_k + self.plusmin * 1j * self.d_yx_min_k
         self.Dy_min_k = self.d_xy_min_k + self.plusmin * 1j * self.d_yy_min_k
 
-    def di_dj_cij(self):
+    def di_dj_cij(self) -> None:
         self.Dx_Dx_Cxx = self.Dx_pls_k * self.Dx_min_k * self.c_ij(0, 0)
         self.Dx_Dy_Cxy = self.Dx_pls_k * self.Dy_min_k * self.c_ij(0, 1)
         self.Dy_Dx_Cyx = self.Dy_pls_k * self.Dx_min_k * self.c_ij(1, 0)
